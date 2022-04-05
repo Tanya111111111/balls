@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		.ball{
+			background-color: darkred;
+			height: 100px;
+			width: 100px;
+			position: absolute;
+			border-radius: 100px;
+			transition: 1s;
+		}
+	</style>
+</head>
+<body>
+	<h1>score: <span class="score">0</span></h1>
+<div class="ball b1" style="top:50px;left:50px"></div>
+<div class="ball b1" style="top:250px;left:400px"></div>
+<div class="ball b1" style="top:450px;left:150px"></div>
+<div class="ball b2" style="top:100px;left:500px"></div>
+<div class="ball b2" style="top:350px;left:940px"></div>
+<div class="ball b2" style="top:500px;left:1200px"></div>
+<div class="ball b3" style="top:120px;left:240px"></div>
+<div class="ball b3" style="top:420px;left:650px"></div>
+<div class="ball b3" style="top:500px;left:230px"></div>
+<div class="ball b4" style="top:150px;left:950px"></div>
+<div class="ball b4" style="top:50px;left:630px"></div>
+<div class="ball b4" style="top:50px;left:1230px"></div>
+
+</body>
+<script>
+	let circles=document.querySelectorAll(".ball");
+	let b1=document.querySelectorAll(".b1");
+	let b2=document.querySelectorAll(".b2");
+	let b3=document.querySelectorAll(".b3");
+	let b4=document.querySelectorAll(".b4");
+
+let left_1 = 100;
+let top_1=0;
+let width_1=20;
+let score=0;
+let height_1=20;
+document.querySelector(".score").innerHTML=score;
+function change(){
+    for(let i=0; i<4; i=i+1){
+        circles[i].style.left = left_1 * i + "px"
+    }
+    left_1 = left_1 + 10;
+
+    for(let i=4; i<8; i=i+1){
+    	circles[i].style.top= top_1*i+"px"
+    }
+    top_1=top_1 +10;
+
+    for(let i=8; i<12; i=i+1){
+    	circles[i].style.width= width_1*i+"px";
+    	circles[i].style.height=height_1*i+"px";
+    	
+    }
+    width_1=width_1-1;
+    height_1=height_1-1;
+}
+for(let i=0;i<12;i=i+1){
+circles[i].onclick=function(){
+	score=score+1
+	circles[i].style.display="none";
+	document.querySelector(".score").innerHTML=score;
+}
+}
+function Tt(){
+	if(score>=9){
+		alert("победа")
+	}
+	if(score<9){
+		alert("проигрыш")
+	}
+}
+setInterval(change,1000);
+setTimeout(Tt,6000)
+</script>
+</html>
